@@ -1,0 +1,8 @@
+{
+  "appId": "com.arka.premium",
+  "appName": "ARKA PREMIUM",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

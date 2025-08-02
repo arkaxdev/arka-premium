@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تست لاگین - ARKA PREMIUM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1565c0;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>تست لاگین ARKA</h1>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">نام کاربری:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">رمز عبور:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit" id="submitBtn">ورود</button>
+        </form>
+        
+        <div id="message" class="message"></div>
+        
+        <div class="info">
+            <strong>اطلاعات تست:</strong><br>
+            Username: ParsPremiummidjourney463<br>
+            Password: ParsPremium:1404
+        </div>
+        
+        <div id="result" class="result"></div>
+    </div>
+    
+    <script>
+        const form = document.getElementById('loginForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const messageDiv = document.getElementById('message');
+        const resultDiv = document.getElementById('result');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Reset UI
+            messageDiv.style.display = 'none';
+            resultDiv.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'در حال ورود...';
+            
+            // Check for test credentials
+            if (username === 'ParsPremiummidjourney463' && password === 'ParsPremium:1404') {
+                // Simulate successful login
+                const mockData = {
+                    token: 'test_token_' + Date.now(),
+                    user: {
+                        username: username,
+                        email: 'parspremium@example.com',
+                        name: 'Pars Premium User'
+                    }
+                };
+                
+                // Show success
+                messageDiv.className = 'message success';
+                messageDiv.textContent = '✓ ورود موفقیت‌آمیز! (حالت تست)';
+                messageDiv.style.display = 'block';
+                
+                // Show result
+                resultDiv.textContent = 'داده‌های ذخیره شده:\n' + JSON.stringify(mockData, null, 2);
+                resultDiv.style.display = 'block';
+                
+                // Save to localStorage for testing
+                localStorage.setItem('arka_token', mockData.token);
+                localStorage.setItem('arka_user', JSON.stringify(mockData.user));
+                
+                submitBtn.textContent = '✓ ورود موفق';
+                submitBtn.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
+                
+            } else {
+                // Try real API
+                try {
+                    const response = await fetch('https://api.divateam.co/api/v1/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok && data.token) {
+                        messageDiv.className = 'message success';
+                        messageDiv.textContent = '✓ ورود موفقیت‌آمیز!';
+                        messageDiv.style.display = 'block';
+                        
+                        resultDiv.textContent = 'پاسخ سرور:\n' + JSON.stringify(data, null, 2);
+                        resultDiv.style.display = 'block';
+                        
+                        submitBtn.textContent = '✓ ورود موفق';
+                        submitBtn.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
+                    } else {
+                        throw new Error(data.message || 'خطا در ورود');
+                    }
+                    
+                } catch (error) {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = 'خطا: ' + error.message;
+                    messageDiv.style.display = 'block';
+                    
+                    resultDiv.textContent = 'جزئیات خطا:\n' + error.toString();
+                    resultDiv.style.display = 'block';
+                    
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'ورود';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

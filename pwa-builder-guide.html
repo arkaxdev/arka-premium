@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای ساخت APK</title>
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-right: 4px solid #667eea;
+        }
+        .step h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .button:hover {
+            background: #5a67d8;
+        }
+        .code {
+            background: #2d3748;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+            direction: ltr;
+            text-align: left;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 راهنمای ساخت APK از ARKA PREMIUM</h1>
+        
+        <div class="warning">
+            <strong>⚠️ توجه:</strong> چون Android Studio نصب نیست، از روش آنلاین استفاده می‌کنیم.
+        </div>
+
+        <div class="step">
+            <h2>مرحله 1: آپلود فایل‌ها</h2>
+            <p>فایل‌های پروژه باید روی یک سرور HTTPS قرار بگیرند. می‌توانید از یکی از این روش‌ها استفاده کنید:</p>
+            
+            <h3>گزینه A: GitHub Pages (رایگان)</h3>
+            <ol>
+                <li>یک repository در GitHub بسازید</li>
+                <li>فایل‌های پوشه <code>www</code> را آپلود کنید</li>
+                <li>از Settings → Pages فعال کنید</li>
+            </ol>
+            
+            <h3>گزینه B: Netlify Drop (سریع‌ترین)</h3>
+            <a href="https://app.netlify.com/drop" target="_blank" class="button">باز کردن Netlify Drop</a>
+            <p>فقط پوشه <code>www</code> را drag & drop کنید!</p>
+        </div>
+
+        <div class="step">
+            <h2>مرحله 2: ساخت APK با PWABuilder</h2>
+            <a href="https://www.pwabuilder.com" target="_blank" class="button">رفتن به PWABuilder</a>
+            <ol>
+                <li>URL سایت آپلود شده را وارد کنید</li>
+                <li>روی "Start" کلیک کنید</li>
+                <li>صبر کنید تا آنالیز کامل شود</li>
+                <li>"Package for stores" را انتخاب کنید</li>
+                <li>"Android" را انتخاب کنید</li>
+                <li>تنظیمات:
+                    <ul>
+                        <li>Package ID: <code>com.arka.premium</code></li>
+                        <li>App name: <code>ARKA PREMIUM</code></li>
+                    </ul>
+                </li>
+                <li>"Download" را کلیک کنید</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h2>مرحله 3: دریافت APK</h2>
+            <p>فایل ZIP دانلود می‌شود که شامل:</p>
+            <ul>
+                <li><strong>app-release-signed.apk</strong> - فایل آماده نصب</li>
+                <li><strong>app-release-bundle.aab</strong> - برای Google Play Store</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h3>✅ اطلاعات تست:</h3>
+            <p><strong>Username:</strong> ParsPremiummidjourney463</p>
+            <p><strong>Password:</strong> ParsPremium:1404</p>
+        </div>
+
+        <div class="step">
+            <h2>روش جایگزین: AppsGeyser</h2>
+            <a href="https://www.appsgeyser.com/create/start/" target="_blank" class="button">ساخت با AppsGeyser</a>
+            <p>این روش کاملاً رایگان است و نیازی به آپلود ندارد!</p>
+        </div>
+
+        <div class="warning">
+            <strong>💡 نکته:</strong> پوشه <code>www</code> در مسیر زیر قرار دارد:
+            <div class="code">C:\Users\Byte\Desktop\appli\www</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "arka-premium-app",
+  "version": "2.0.0",
+  "description": "ARKA PREMIUM - مدیریت کوکی و دسترسی کاربران",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8080",
+    "build": "echo 'No build required'",
+    "cap:init": "npm install && npx cap init",
+    "cap:add": "npx cap add android",
+    "cap:sync": "npx cap sync",
+    "cap:open": "npx cap open android",
+    "cap:build": "npx cap sync && npx cap open android",
+    "apk:setup": "npm install @capacitor/core @capacitor/cli @capacitor/android",
+    "apk:create": "npm run cap:add && npm run cap:sync"
+  },
+  "keywords": [
+    "pwa",
+    "android",
+    "apk",
+    "arka",
+    "premium"
+  ],
+  "author": "ARKA Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@capacitor/cli": "^5.0.0"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/splash-screen": "^5.0.0"
+  }
+}

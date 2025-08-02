@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <title>ARKA PREMIUM</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+        }
+        
+        #mainFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        
+        #offlineMessage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff6b6b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            z-index: 9999;
+            display: none;
+        }
+        
+        #installPrompt {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            padding: 20px;
+            display: none;
+            z-index: 9998;
+        }
+        
+        #installPrompt h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        #installPrompt p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        #installPrompt button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        #installPrompt button.secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="offlineMessage">
+        شما آفلاین هستید. برخی قابلیت‌ها ممکن است در دسترس نباشند.
+    </div>
+    
+    <iframe id="mainFrame" src="pages/splash.html"></iframe>
+    
+    <div id="installPrompt">
+        <h3>نصب ARKA PREMIUM</h3>
+        <p>برای دسترسی سریع‌تر، اپلیکیشن را روی گوشی خود نصب کنید!</p>
+        <button onclick="installApp()">نصب</button>
+        <button class="secondary" onclick="hideInstallPrompt()">بعداً</button>
+    </div>
+    
+    <script src="js/app.js"></script>
+    <!-- Service Worker غیرفعال شده برای رفع مشکل API -->
+    <!-- <script src="js/sw-register.js"></script> -->
+</body>
+</html>
